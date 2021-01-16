@@ -3,7 +3,7 @@
   "name": "Clipboard Checker for Chrome",
   "version": "0.1.5",
   "description": "Keep your clipboard safe from malicious javascript insertions.",
-  "permissions": ["activeTab", "clipboardRead"],
+  "permissions": ["clipboardRead"],
   "background": {
     "persistent": false,
     "page": "background.html"
