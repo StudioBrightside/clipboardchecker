@@ -28,19 +28,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     });
 
     // highlight selection
-    let node_name = document.getSelection().focusNode.parentNode.nodeName;
+    // let node_name = document.getSelection().focusNode.parentNode.nodeName;
 
-    if (node_name == "CODE") {
-      let range = document.getSelection().getRangeAt(0),
-        span = document.createElement("span");
+    // if (node_name == "CODE") {
+    //   let range = document.getSelection().getRangeAt(0),
+    //     span = document.createElement("span");
 
-      span.className = "vnotify-highlight";
-      span.appendChild(range.extractContents());
-      range.insertNode(span);
+    //   span.className = "vnotify-highlight";
+    //   span.appendChild(range.extractContents());
+    //   range.insertNode(span);
 
-      span.addEventListener("click", function (e) {
-        e.target.classList.remove("vnotify-highlight");
-      });
-    }
+    //   span.addEventListener("click", function (e) {
+    //     e.target.classList.remove("vnotify-highlight");
+    //   });
+    // }
   }
 });
