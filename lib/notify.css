@@ -1,6 +1,7 @@
 .vnotify-container {
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
+  z-index: 999999;
 }
 .vnotify-container.vn-top-right {
   right: 10px;
