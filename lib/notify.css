@@ -1,5 +1,5 @@
 .clipboard_notification__container {
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 20px;
   width: 205px;
