@@ -16,6 +16,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 /**
  * Function to read the actual clipboard
+ * @see: https://stackoverflow.com/questions/22702446/how-to-get-clipboard-data-in-chrome-extension
  */
 function getClipboard() {
   var result = null;

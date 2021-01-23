@@ -10,6 +10,17 @@ Clipboard checker is a set it and forget it chrome extension. It will scan and c
 
 Although unknown to many, JavaScript can [interact with your clipboard](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard) without you noticing it. This adds for a bit of service (on the Fox News website, when you copy an excerpt, the line "Read more on Fox News..." is added), but can be harmful as well (check a – harmless – demo at [clipboardchecker.studiobrightside.io](https://clipboardchecker.studiobrightside.io)).
 
+## How does it work?
+
+- When you selected a piece of text in your browser, and you copy it (either hitting ⌘+C/Ctrl+C or copying it from the context menu), the DOM fires a `copy` event
+- A small piece of JavaScript (`/content.js`) catches this event and asks the Chrome Runtime if it can match the clipboard contents with the currently selected text (which is provided via an JavaScript API)
+- The Chrome runtime (`background.js`) fetches the clipboard – by some magic from StackOverflow – and matches it with the selection. If there something fishy going on, it will tell the active tab to show a popup.
+
+## Limitations
+
+- `document.getSelection().toString()` parses the current selection to a string, but your clipboard can typically handle rich data. This sometimes causes false positives to occur.
+- To prevent the popup from firing constantly, the clipboard check is only triggered when some text has been selected. For example: rurns out that password managers are manipulating your clipboard as well (seems fair when you come to think of it).
+
 ## Getting Started
 
 This extension does not need any building/compiling to run. Mount the root of this folder as an "unpacked" extension in Google Chrome to develop.
