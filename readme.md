@@ -12,14 +12,14 @@ Although unknown to many, JavaScript can [interact with your clipboard](https://
 
 ## How does it work?
 
-- When you selected a piece of text in your browser, and you copy it (either hitting ⌘+C/Ctrl+C or copying it from the context menu), the DOM fires a `copy` event
+- When you select a piece of text in your browser, and you copy it (either hitting ⌘+C/Ctrl+C or copying it from the context menu), the DOM fires a `copy` event
 - A small piece of JavaScript (`/content.js`) catches this event and asks the Chrome Runtime if it can match the clipboard contents with the currently selected text (which is provided via an JavaScript API)
 - The Chrome runtime (`background.js`) fetches the clipboard – by some magic from StackOverflow – and matches it with the selection. If there something fishy going on, it will tell the active tab to show a popup.
 
 ## Limitations
 
 - `document.getSelection().toString()` parses the current selection to a string, but your clipboard can typically handle rich data. This sometimes causes false positives to occur.
-- To prevent the popup from firing constantly, the clipboard check is only triggered when some text has been selected. For example: rurns out that password managers are manipulating your clipboard as well (seems fair when you come to think of it).
+- To prevent the popup from firing constantly, the clipboard check is only triggered when some text has been selected. For example: turns out that password managers are manipulating your clipboard as well (seems fair when you come to think of it).
 
 ## Getting Started
 
