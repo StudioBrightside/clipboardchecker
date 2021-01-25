@@ -1,3 +1,10 @@
+hashCode = function (s) {
+  return s.split("").reduce(function (a, b) {
+    a = (a << 5) - a + b.charCodeAt(0);
+    return a & a;
+  }, 0);
+};
+
 /**
  * Receive check clipboard events from content.js
  */
@@ -5,7 +12,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.message === "check_clipboard") {
     let actual_clipboard = getClipboard();
 
-    if (actual_clipboard != request.selection.toString()) {
+    if (hashCode(actual_clipboard) != hashCode(request.selection)) {
       // dispatch an event back so we can show a toast in the browser window
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, { message: "show_notification" });

@@ -5,7 +5,7 @@
 document.addEventListener("copy", async (event) => {
   let selection = document.getSelection();
 
-  if (selection.toString() || 0 !== selection.toString().length) {
+  if (selection.toString().trim().length !== 0) {
     chrome.runtime.sendMessage({
       message: "check_clipboard",
       selection: selection.toString(),
